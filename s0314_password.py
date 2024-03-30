@@ -5,8 +5,7 @@
 # 1. 중복되는 수가 없어야한다.			ex) 1891, 5590, 1545
 # 2. 4자리 연속 1씩 증가하면 안된다.	ex) 1234, 6789
 # 3. 4자리 연속 1씩 감소하면 안된다.	ex) 9876, 6543
-while True:
-    password = input('4자리 수의 암호입력: ')
+def is_unused_password(password):
     p1 = int(password[0])
     p2 = int(password[1])
     p3 = int(password[2])
@@ -15,6 +14,11 @@ while True:
     incremented = p1 + 1 == p2 and p2 + 1 == p3 and p3 + 1 == p4
     decremented = p1 - 1 == p2 and p2 - 1 == p3 and p3 - 1 == p4
     unused_password = duplicated or incremented or decremented
+    return unused_password
+
+while True:
+    password = input('4자리 수의 암호입력: ')    
+    unused_password = is_unused_password(password)
     if unused_password:
         print("사용할 수 없는 암호입니다.")
     else:
